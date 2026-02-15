@@ -1,0 +1,11 @@
+#include<stdio.h>
+int main()
+{
+int n;
+scanf("%d",&n);
+int sq=nn;
+int cu=nn*n;
+printf("%d is the square and %d is the cube of the number %
+d",sq,cu,n);
+return 0;
+}
