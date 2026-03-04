@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 50
+
+struct Student {
+    char name[50];
+    int roll_no;
+    float marks;
+    char grade;
+};
+
+// Function to calculate grade based on marks
+char calculateGrade(float marks) {
+    if (marks >= 90) return 'A';
+    else if (marks >= 75) return 'B';
+    else if (marks >= 60) return 'C';
+    else if (marks >= 40) return 'D';
+    else return 'F';
+}
+
+int main() {
+    struct Student students[MAX];
+    int count = 0, choice;
+
+    do {
+        printf("\n--- Student Management Menu ---\n");
+        printf("1. Add Student Record\n");
+        printf("2. Display All Students\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                if (count < MAX) {
+                    printf("Enter Student Name: ");
+                    scanf("%s", students[count].name);
+
+                    printf("Enter Roll Number: ");
+                    scanf("%d", &students[count].roll_no);
+
+                    printf("Enter Marks: ");
+                    scanf("%f", &students[count].marks);
+
+                    // Calculate grade
+                    students[count].grade = calculateGrade(students[count].marks);
+
+                    count++;
+                    printf("Student record added successfully!\n");
+                } else {
+                    printf("Maximum student limit reached!\n");
+                }
+                break;
+
+            case 2:
+                if (count == 0) {
+                    printf("No student records available.\n");
+                } else {
+                    printf("\n--- Student Records ---\n");
+                    for (int i = 0; i < count; i++) {
+                        printf("Name: %s, Roll No: %d, Marks: %.2f, Grade: %c\n",
+                               students[i].name, students[i].roll_no,
+                               students[i].marks, students[i].grade);
+                    }
+                }
+                break;
+
+            case 3:
+                printf("Exiting program...\n");
+                break;
+
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    } while (choice != 3);
+
+    return 0;
+}

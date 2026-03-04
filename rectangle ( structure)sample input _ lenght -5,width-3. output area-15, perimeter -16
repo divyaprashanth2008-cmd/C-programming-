@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+// Define structure
+struct Rectangle {
+    int length;
+    int width;
+};
+
+int main() {
+    struct Rectangle rect;
+
+    // Sample input
+    printf("Enter length: ");
+    scanf("%d", &rect.length);
+
+    printf("Enter width: ");
+    scanf("%d", &rect.width);
+
+    // Calculate area and perimeter
+    int area = rect.length * rect.width;
+    int perimeter = 2 * (rect.length + rect.width);
+
+    // Output
+    printf("Area = %d\n", area);
+    printf("Perimeter = %d\n", perimeter);
+
+    return 0;
+}

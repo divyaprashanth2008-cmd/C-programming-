@@ -1,0 +1,9 @@
+#include <stdio.h> 
+int main() { 
+int i = 1; 
+int a; 
+a = i++ + i++ + i++; 
+printf("a = %d\n", a); 
+printf("i = %d\n", i); 
+return 0; 
+}

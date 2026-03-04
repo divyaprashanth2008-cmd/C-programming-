@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    char str[200], sub[100];
+    int i, j, k, found = 0;
+
+    printf("Enter the main string: ");
+    fgets(str, sizeof(str), stdin);
+
+    printf("Enter the substring to search: ");
+    fgets(sub, sizeof(sub), stdin);
+
+    // Remove newline characters if present
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] == '\n') str[i] = '\0';
+    }
+    for (i = 0; sub[i] != '\0'; i++) {
+        if (sub[i] == '\n') sub[i] = '\0';
+    }
+
+    // Manual substring search
+    for (i = 0; str[i] != '\0'; i++) {
+        j = i;
+        k = 0;
+        while (str[j] != '\0' && sub[k] != '\0' && str[j] == sub[k]) {
+            j++;
+            k++;
+        }
+        if (sub[k] == '\0') {
+            found = 1;
+            printf("Substring found at position %d\n", i);
+        }
+    }
+
+    if (!found) {
+        printf("Substring not found.\n");
+    }
+
+    return 0;
+}

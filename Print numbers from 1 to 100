@@ -1,0 +1,7 @@
+//Write a C program to display words
+#include <stdio.h>
+
+int main() {
+    printf("Hello,Myself Meeran");
+    return 0;
+}

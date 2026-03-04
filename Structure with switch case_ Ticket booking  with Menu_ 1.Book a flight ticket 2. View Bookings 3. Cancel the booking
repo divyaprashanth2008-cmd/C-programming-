@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 10
+
+struct Booking {
+    int id;
+    char name[50];
+    char flight[20];
+};
+
+int main() {
+    struct Booking bookings[MAX];
+    int count = 0, choice, id, i;
+    char name[50], flight[20];
+
+    do {
+        printf("\n--- Ticket Booking Menu ---\n");
+        printf("1. Book a flight ticket\n");
+        printf("2. View Bookings\n");
+        printf("3. Cancel the booking\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                if (count < MAX) {
+                    printf("Enter Booking ID: ");
+                    scanf("%d", &bookings[count].id);
+                    printf("Enter Passenger Name: ");
+                    scanf("%s", bookings[count].name);
+                    printf("Enter Flight Name: ");
+                    scanf("%s", bookings[count].flight);
+                    count++;
+                    printf("Ticket booked successfully!\n");
+                } else {
+                    printf("Booking limit reached!\n");
+                }
+                break;
+
+            case 2:
+                if (count == 0) {
+                    printf("No bookings available.\n");
+                } else {
+                    printf("\n--- Current Bookings ---\n");
+                    for (i = 0; i < count; i++) {
+                        printf("ID: %d, Name: %s, Flight: %s\n",
+                               bookings[i].id, bookings[i].name, bookings[i].flight);
+                    }
+                }
+                break;
+
+            case 3:
+                if (count == 0) {
+                    printf("No bookings to cancel.\n");
+                } else {
+                    printf("Enter Booking ID to cancel: ");
+                    scanf("%d", &id);
+                    int found = 0;
+                    for (i = 0; i < count; i++) {
+                        if (bookings[i].id == id) {
+                            found = 1;
+                            for (int j = i; j < count - 1; j++) {
+                                bookings[j] = bookings[j + 1];
+                            }
+                            count--;
+                            printf("Booking cancelled successfully!\n");
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        printf("Booking ID not found.\n");
+                    }
+                }
+                break;
+
+            case 4:
+                printf("Exiting program...\n");
+                break;
+
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    } while (choice != 4);
+
+    return 0;
+}

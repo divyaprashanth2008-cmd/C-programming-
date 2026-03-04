@@ -1,13 +1,6 @@
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+
 int main() {
-char str[10]=”JAISON SAMUVEL”, sub[10];
+char str[20]="s ", sub[20];
 int start, length, i;
-scanf("%d", &start);
-scanf("%d", &length);
-for (i = 0; i < length; i++) {
-sub[i] = str[start + i];
-}
-sub[i] = '\0';
-printf("Substring is: %s\n", sub);
-return 0;
+scanf("%d", &start);}
